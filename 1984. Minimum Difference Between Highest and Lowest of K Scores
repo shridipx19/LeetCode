@@ -1,0 +1,15 @@
+class Solution {
+    public int minimumDifference(int[] nums, int k) {
+        Arrays.sort(nums);  // Sort the input array
+        int left = 0;
+        int right = k -1;   // Since k is len of the window frame
+        int minDiff = Integer.MAX_VALUE;
+        while (right < nums.length) {
+            int diff = nums[right] - nums[left];
+            minDiff = Math.min(minDiff, diff);
+            left++;
+            right++;
+        }
+        return minDiff;
+    }
+}
