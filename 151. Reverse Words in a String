@@ -1,0 +1,22 @@
+class Solution {
+    public String reverseWords(String s) {
+        // Two pointer approach
+        int left = s.length() -1;   
+        String ans = "";
+        while (left >= 0) {     
+            
+            while (left >= 0 && s.charAt(left) == ' ') left--;      // Skip spaces
+            int right = left;       // After skip update the right pointer as well
+            
+            if (left < 0) break;    // If left goes out of bound
+            
+            while (left >= 0 && s.charAt(left) != ' ') left--;      // Hover the left pointer to highlight the word
+            
+            if (ans.isEmpty())      // Edge case, check if any word add previously or not to handle extra space after the last  word
+                ans = ans.concat(s.substring(left +1, right +1));
+            else 
+                ans = ans.concat(" " + s.substring(left +1, right +1));
+        }
+        return ans;
+    }
+}
