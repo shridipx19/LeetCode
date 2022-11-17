@@ -1,0 +1,22 @@
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int lastIndex = m + n -1;
+        // Replace elements in reverse order in the array of greater length say nums1
+        while (m > 0 && n > 0) {
+            if (nums1[m -1] > nums2[n -1]) {
+                nums1[lastIndex] = nums1[m -1]; // Replace the value with a larger value
+                m--;
+            } else {
+                nums1[lastIndex] = nums2[n -1]; // Vice versa
+                n--;
+            }
+            lastIndex--;    // Make sure to update the lastIndex as well while inserting element to the end of the array
+        }
+        // Check for the remaining elements if still left, flush them to the left places from the lastIndex
+        while (n > 0) {
+            nums1[lastIndex] = nums2[n -1];
+            n--;
+            lastIndex--;
+        }
+    }
+}
