@@ -1,2 +1,5 @@
-# LeetCode
-Hey folks, here I will have a bunch of solutions for some good problems to start with as a beginner
+Hi there! My name is Shridip and I would like to provide leetcode solns for this repository.
+My intention is to provide with the most easieset and efficient solns
+These solns will be most likely to be the last optimal soln you can explain to the interviewer
+Stay tuned for more upcoming leetcode solutions.
+# LeetCode #Beginner #InterviewPrep #Coding
