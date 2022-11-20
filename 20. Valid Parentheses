@@ -1,0 +1,29 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> S = new Stack<>();
+        
+        // Iterate over the string
+        for (int i = 0; i < s.length(); i++) {
+            if (isOpen(s.charAt(i))) {
+                S.push(s.charAt(i));    // push if a open bracket
+            }
+            else {  // it's closing bracket
+                if (S.isEmpty())
+                    return false;   // first char closing bracket is invalid 
+                else if (!match(S.peek(), s.charAt(i))) 
+                    return false;
+                else
+                    S.pop();
+            }
+        }
+        return S.isEmpty();     // anything in the stack remaining means invalid
+    }
+    // Checks for open brackets
+    boolean isOpen(char c) {
+        return (c == '(' || c == '{' || c == '[');
+    }
+    // Compare the current character with the top of the stack
+    boolean match(char a, char b) {
+        return (a == '(' && b == ')' || a == '{' && b == '}' || a == '[' && b == ']');
+    }
+}
