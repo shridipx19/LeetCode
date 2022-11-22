@@ -1,0 +1,23 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+            // Letter, lastIndex
+        Map<Character, Integer> map = new HashMap<>();
+        int left = 0;
+        int right = 0;
+        int maxLen = 0;
+        while (right < s.length()) {
+            if (map.containsKey(s.charAt(right))) {
+                // Slide the left pointer +1 to skip the current colliding character
+                left = Math.max(left, map.get(s.charAt(right)) +1);
+            }
+            // Otherwise put the char at index right in the Map
+            map.put(s.charAt(right), right);
+            // Update the maxLength with current length incase its greater
+            maxLen = Math.max(maxLen, right -left +1);
+            // Traversal index updation
+            right++; 
+            
+        }
+        return maxLen;
+    }
+}
