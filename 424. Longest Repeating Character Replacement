@@ -1,0 +1,26 @@
+class Solution {
+    public int characterReplacement(String s, int k) {
+        int start = 0;
+        int end = 0;
+        int maxLen = 0;
+        int maxCount = 0;
+        int[] letter = new int[26];
+        while (end < s.length()) {
+            // Assign to corresponding index of letter array
+            letter[s.charAt(end) - 'A']++; 
+            int currCount = letter[s.charAt(end) - 'A'];
+            // Update most freq character in the window
+            maxCount = Math.max(maxCount, currCount);
+            // Change the sliding window
+            while (end -start +1 -maxCount > k) {
+                // Reduce the count size of the first letter in the current window
+                letter[s.charAt(start) - 'A']--;
+                // Slide the start pointer
+                start++;
+            }
+            maxLen = Math.max(maxLen, end -start +1);
+            end++;
+        }
+        return maxLen;
+    }
+}
