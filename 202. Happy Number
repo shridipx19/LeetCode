@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isHappy(int n) {
+        // Create a hashset
+        HashSet<Integer> seen = new HashSet<>();
+        while (n!= 1 && !seen.contains(n)) {
+            // add as it does not exist in the set
+            seen.add(n);
+            int totalSum = 0;   // reset totalSum
+            // Calc the totalSum
+            while (n > 0) {
+                int digit = n % 10;
+                totalSum += digit*digit;
+                // Update the digit left
+                n /= 10;
+            }
+            n = totalSum;   // we will use n to iterate 
+            
+        }
+        return n == 1;  // if written ret false it won't work for 1 as i/p
+    }
+}
